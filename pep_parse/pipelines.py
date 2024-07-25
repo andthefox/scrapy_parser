@@ -1,6 +1,5 @@
 import csv
 from datetime import datetime
-from itemadapter import ItemAdapter
 
 BASE_DIR = '/results'
 
