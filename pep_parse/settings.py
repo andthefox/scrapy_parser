@@ -15,3 +15,5 @@ FEEDS = {
 ITEM_PIPELINES = {
     'pep_parse.pipelines.PepParsePipeline': 300,
 }
+
+LOG_FILE = 'scrapy_output.txt'

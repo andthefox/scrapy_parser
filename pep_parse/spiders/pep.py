@@ -1,4 +1,5 @@
 import scrapy
+from urllib.parse import urljoin
 
 
 class PepSpider(scrapy.Spider):
@@ -11,9 +12,14 @@ class PepSpider(scrapy.Spider):
         Собирает ссылки на документы PEP
         """
         all_peps = response.css(
-            '#numerical-index > h2 + table > tbody > tr > td:nth-child(2) > a'
-        )
+            '#numerical-index > h2 + table > tbody > '
+            'tr > td:nth-child(2) > a::attr(href)'
+        ).extract()
         for pep_link in all_peps:
+            pep_link = urljoin(
+                self.start_urls[0],
+                pep_link
+            )
             yield response.follow(pep_link, callback=self.parse_pep)
 
     def parse_pep(self, response):
@@ -26,12 +32,10 @@ class PepSpider(scrapy.Spider):
         pep_header = ' '.join(response.css(
             '#pep-content > h1::text'
         ).getall()).split('–')[1].strip().strip('\"')
-        print(pep_header)
-
         yield {
             'number': int(pep_number),
             'name': pep_header.strip(),
             'status': response.css(
-                'dt:contains("Status") + dd > abbr::text'
+                'dt:contains("Status") + dd *::text'
             ).get()
         }
