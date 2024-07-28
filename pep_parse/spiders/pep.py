@@ -18,7 +18,7 @@ class PepSpider(scrapy.Spider):
         for pep_link in all_peps:
             pep_link = urljoin(
                 self.start_urls[0],
-                pep_link
+                pep_link + '/',
             )
             yield response.follow(pep_link, callback=self.parse_pep)
 
