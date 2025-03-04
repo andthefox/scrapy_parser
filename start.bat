@@ -14,4 +14,6 @@ call venv/Scripts/activate && scrapy crawl insta
 
 echo Done! =)
 
+%SystemRoot%\explorer.exe "results"
+
 pause
