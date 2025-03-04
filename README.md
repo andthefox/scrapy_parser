@@ -9,20 +9,19 @@
 1. Клонировать репозиторий:
 ```
 git clone git@github.com:andthefox/scrapy_parser.git
+
+git checkout reels_description
 ```
-2. Перейти в папку в командной строке:
-```
-cd insta_parser
-```
-3. Создать виртуальное окружение:
+1. 1. Альтернативный вариант: запустить `start.bat`. Установка и запуск произойдет автоматически.
+2. Создать виртуальное окружение:
 ```
 python3 -m venv venv
 ```
-4. Активировать вирутальное окружение:
+3. Активировать вирутальное окружение:
 ```
 source venv/bin/activate
 ```
-5. Установить зависимости из файла requirements.txt:
+4. Установить зависимости из файла requirements.txt:
 ```
 python3 -m pip install --upgrade pip
 ```
@@ -30,7 +29,7 @@ python3 -m pip install --upgrade pip
 ```
 pip install -r requirements.txt
 ```
-6. Перейти в корневую папку проекта
+5. Перейти в корневую папку проекта
 ```
 cd ../
 ```

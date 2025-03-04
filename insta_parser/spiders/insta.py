@@ -1,6 +1,8 @@
 import csv
 import scrapy
 
+from tqdm import tqdm
+
 LIST_FILE = 'list.csv'
 
 
@@ -23,7 +25,8 @@ class InstaSpider(scrapy.Spider):
         """
         Собирает ссылки на рилсы и запускает парсинг
         """
-        for link in self.start_urls:
+
+        for link in tqdm(self.start_urls):
             yield response.follow(link, callback=self.parse_reel)
 
     def parse_reel(self, response):
